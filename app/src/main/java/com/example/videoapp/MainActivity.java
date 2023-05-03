@@ -1,11 +1,19 @@
 package com.example.videoapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -20,10 +28,55 @@ public class MainActivity extends AppCompatActivity {
 RecyclerView recyclerView;
 ArrayList<Modal> arrayList;
 private Adapter adapter;
+    DrawerLayout drawerLayout;
+    public static void logout(final APKActivity mainActivity2) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity2);builder.setTitle("Logout");
+        builder.setMessage("Are You Sure You Want to Logout ?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mainActivity2.finishAffinity(); System.exit(0); }});
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss(); }});builder.show(); }
+    public static void logout(final ZipActivity ai) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(ai);builder.setTitle("Logout");
+        builder.setMessage("Are You Sure You Want to Logout ?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+            public void onClick(DialogInterface dialog, int which) {
+               ai.finishAffinity(); System.exit(0); }});
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss(); }});builder.show(); }
+    public static void logout(final CodeActivity mainActivity3) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity3);builder.setTitle("Logout");
+        builder.setMessage("Are You Sure You Want to Logout ?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mainActivity3.finishAffinity(); System.exit(0); }});
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss(); }});builder.show(); }
+    public static void logout(final AboutActivity mainActivity2) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity2);builder.setTitle("Logout");
+        builder.setMessage("Are You Sure You Want to Logout ?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mainActivity2.finishAffinity(); System.exit(0); }});
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss(); }});builder.show(); }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        drawerLayout=(DrawerLayout)findViewById(R.id.adraw);
+
         recyclerView=findViewById(R.id.rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
@@ -73,5 +126,41 @@ private Adapter adapter;
         recyclerView.setAdapter(adapter);
 
     }
-
+    public void ClickMenu(View view){
+        openDrawer(drawerLayout);
+    }
+    public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); }
+    public void ClickLogo(View view){
+        closeDrawer(drawerLayout);
+    }
+    public static void closeDrawer(DrawerLayout drawerLayout) { if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        drawerLayout.closeDrawer(GravityCompat.START); } }
+    public void ClickHome(View view){
+        recreate();
+    }
+    public void ClickAPK(View view){
+        redirectActivity(this,APKActivity.class);
+    }
+    public void ClickZip(View view){
+        redirectActivity(this,ZipActivity.class);
+    }
+    public void ClickCode(View view){
+        redirectActivity(this,CodeActivity.class);
+    }
+    public void ClickAboutUs(View view){
+        redirectActivity(this,AboutActivity.class);
+    }
+    public void ClickLogout(View view){
+        logout(this); }
+    public static void logout(final MainActivity mainActivity) { AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity);
+        builder.setTitle("Logout");builder.setMessage("Are You Sure You Want to Logout ?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mainActivity.finishAffinity();System.exit(0); }});
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
+        public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }}); builder.show(); }
+    public static void redirectActivity(Activity activity, Class aclass) { Intent intent=new Intent(activity,aclass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); activity.startActivity(intent); } @Override
+protected void onPause() { super.onPause(); closeDrawer(drawerLayout); }
 }

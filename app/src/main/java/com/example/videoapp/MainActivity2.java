@@ -1,10 +1,13 @@
 package com.example.videoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -18,10 +21,12 @@ import com.pd.lookatme.LookAtMe;
 public class MainActivity2 extends AppCompatActivity {
 WebView webView;
 ToggleButton toggleButton;
+    DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        drawerLayout=(DrawerLayout)findViewById(R.id.draw);
         toggleButton = findViewById(R.id.tb1);
         webView = findViewById(R.id.full);
         String link=getIntent().getStringExtra("link");
@@ -42,5 +47,13 @@ ToggleButton toggleButton;
         });
 
     }
-
+    public void ClickMenu(View view){
+        openDrawer(drawerLayout);
+    }
+    public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); }
+    public void ClickLogo(View view){
+        closeDrawer(drawerLayout);
+    }
+    public static void closeDrawer(DrawerLayout drawerLayout) { if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        drawerLayout.closeDrawer(GravityCompat.START); } }
 }
