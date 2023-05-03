@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Ai_Mode_Activity">
+
+        <ToggleButton
+            android:id="@+id/tb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="140dp"
+            android:text="ToggleButton 1"
+            android:textOff="AI Mode"
+            android:textOn="Normal Mode" />
+
+    <com.pd.lookatme.LookAtMe
+        android:id="@+id/lookme"
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:layout_below="@id/tb1"
+        />
+    </RelativeLayout>
