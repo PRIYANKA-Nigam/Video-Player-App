@@ -11,12 +11,75 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
-        <TextView android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ScrollView android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="ZIP"
-            android:textSize="50dp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:scrollbars="none"
+            android:layout_weight="1"
+            >
+        <TableLayout
+            android:id="@+id/tl"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:shadowColor="@android:color/holo_orange_light"
+            android:shadowDx="-15"
+            android:shadowDy="-15"
+            android:shadowRadius="13"
+            android:layout_height="170dp">
+
+            <TableRow  android:id="@+id/t1"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:shadowColor="@android:color/holo_orange_light"
+                android:shadowDx="-15"
+                android:shadowDy="-15"
+                android:shadowRadius="13"
+                android:isScrollContainer="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="App Name  "
+                    android:shadowColor="@android:color/holo_orange_light"
+                    android:shadowDx="-15"
+                    android:shadowDy="-15"
+                    android:shadowRadius="13"
+                    android:layout_marginRight="5dp"
+                    android:gravity="start"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="Source Code  "
+                    android:shadowColor="@android:color/holo_orange_light"
+                    android:shadowDx="-15"
+                    android:shadowDy="-15"
+                    android:shadowRadius="13"
+                    android:layout_marginRight="5dp"
+                    android:gravity="start"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+        </ScrollView>
+    </LinearLayout>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="300dp"

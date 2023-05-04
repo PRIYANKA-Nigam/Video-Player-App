@@ -33,12 +33,18 @@
                     android:id="@+id/text"
                     android:layout_width="145dp"
                     android:layout_height="90dp"
+                    android:gravity="center"
                     android:layout_gravity="center"
                     android:layout_marginLeft="15dp"
                     android:text="Video Title"
                     android:textColor="#A020F0"
-                    android:textSize="15dp"
-                    android:textStyle="bold"></TextView>
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:shadowColor="@android:color/holo_orange_dark"
+                    android:shadowDx="-15"
+                    android:shadowDy="-15"
+                    android:shadowRadius="13"
+                    ></TextView>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

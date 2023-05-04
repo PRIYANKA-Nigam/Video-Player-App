@@ -1,18 +1,29 @@
 package com.example.videoapp;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.net.Uri;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class ViewCodeActivity extends AppCompatActivity {
     WebView webView;
+    DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_code);
+        drawerLayout=(DrawerLayout)findViewById(R.id.draw);
         webView=(WebView)findViewById(R.id.web);
         String title=getIntent().getStringExtra("title");
         switch (title){
@@ -58,10 +69,62 @@ public class ViewCodeActivity extends AppCompatActivity {
                 webView.loadUrl("https://gitlab.com/-/snippets/2533411");break;
         }
 
-        webView.setWebViewClient(new DownloadAPK.client()); WebSettings webSettings=webView.getSettings();
+        webView.setWebViewClient(new DownloadAPKZip.client()); WebSettings webSettings=webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true); webView.clearCache(true);
         webView.clearHistory();
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dark_brightness,menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.dark:
+                startActivity(new Intent(this,DarkModeActivity.class));
+                break;
+            case R.id.bright:
+                startActivity(new Intent(this,SetBrightnessActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void ClickMenu(View view){
+        openDrawer(drawerLayout);
+    }
+    public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); }
+    public void ClickLogo(View view){
+        closeDrawer(drawerLayout);
+    }
+    public static void closeDrawer(DrawerLayout drawerLayout) { if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        drawerLayout.closeDrawer(GravityCompat.START); } }
+    public void ClickHome(View view){
+        MainActivity.redirectActivity(this,MainActivity.class);
+    }
+    public void ClickAPK(View view){
+        MainActivity.redirectActivity(this,APKActivity.class);
+    }
+    public void ClickZip(View view){
+        MainActivity.redirectActivity(this,ZipActivity.class);
+    }
+    public void ClickCode(View view){
+        MainActivity.redirectActivity(this,CodeActivity.class);
+    }
+    public void ClickAboutUs(View view){
+        MainActivity.redirectActivity(this,AboutActivity.class);
+    }
+    public void ClickLogout(View view){
+        logout(this); }
+    public static void logout(final ViewCodeActivity mainActivity) { android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(mainActivity);
+        builder.setTitle("Logout");builder.setMessage("Are You Sure You Want to Logout ?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mainActivity.finishAffinity();System.exit(0); }});
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
+        public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }}); builder.show(); }
 }

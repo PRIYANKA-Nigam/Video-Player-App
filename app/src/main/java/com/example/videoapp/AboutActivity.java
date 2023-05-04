@@ -1,5 +1,7 @@
+
 package com.example.videoapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -7,8 +9,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class AboutActivity extends AppCompatActivity {
@@ -61,6 +66,25 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
         drawerLayout=(DrawerLayout)findViewById(R.id.edraw);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dark_brightness,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.dark:
+                startActivity(new Intent(this,DarkModeActivity.class));
+                break;
+            case R.id.bright:
+                startActivity(new Intent(this,SetBrightnessActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void ClickMenu(View view){
         openDrawer(drawerLayout);
     }

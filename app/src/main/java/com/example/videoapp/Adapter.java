@@ -3,13 +3,8 @@ package com.example.videoapp;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Parcelable;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,28 +12,18 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pd.lookatme.LookAtMe;
-
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.crypto.spec.OAEPParameterSpec;
 
 public class Adapter extends RecyclerView.Adapter<viewHolder> {
     private Context context;
      private  viewHolder viewHolder;
-
     public Adapter(Context context, ArrayList<Modal> videoArrayList) {
         this.context = context;
         this.videoArrayList = videoArrayList;
@@ -98,7 +83,7 @@ public class Adapter extends RecyclerView.Adapter<viewHolder> {
                                break;
                            case R.id.download:
                            {
-                               Intent intent = new Intent(context,DownloadAPK.class);
+                               Intent intent = new Intent(context, DownloadAPKZip.class);
                                intent.putExtra("title", modal.getTitle());
                                context.startActivity(intent);
                            }
@@ -124,6 +109,10 @@ public class Adapter extends RecyclerView.Adapter<viewHolder> {
         return videoArrayList.size();
     }
 
+    public void setFilter(ArrayList<Modal> newList){
+        videoArrayList=new ArrayList<>();
+        videoArrayList.addAll(newList);
+        notifyDataSetChanged(); }
 
 }
 class viewHolder extends RecyclerView.ViewHolder  {

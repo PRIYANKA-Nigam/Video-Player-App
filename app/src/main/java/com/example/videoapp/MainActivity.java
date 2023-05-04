@@ -1,30 +1,36 @@
 package com.example.videoapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.PictureInPictureParams;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 RecyclerView recyclerView;
 ArrayList<Modal> arrayList;
 private Adapter adapter;
@@ -163,4 +169,49 @@ private Adapter adapter;
     public static void redirectActivity(Activity activity, Class aclass) { Intent intent=new Intent(activity,aclass);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); activity.startActivity(intent); } @Override
 protected void onPause() { super.onPause(); closeDrawer(drawerLayout); }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_dark_brightness,menu);
+        MenuItem menuItem=menu.findItem(R.id.see);
+        SearchView searchView=(SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.dark:
+             startActivity(new Intent(this,DarkModeActivity.class));
+                break;
+            case R.id.bright:
+               startActivity(new Intent(this,SetBrightnessActivity.class));
+            break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        PictureInPictureParams pictureInPictureParams= new PictureInPictureParams.Builder().build();
+        enterPictureInPictureMode(pictureInPictureParams);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        s=s.toLowerCase();
+        ArrayList<Modal> newList=new ArrayList<>();
+        for (Modal dish : arrayList){ String name=dish.getTitle().toLowerCase();
+            if (name.contains(s))
+                newList.add(dish); }
+        adapter.setFilter(newList);
+        return true;
+
+    }
 }

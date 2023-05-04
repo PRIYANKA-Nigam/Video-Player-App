@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,43 +15,54 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebChromeClient;
+import android.webkit.DownloadListener;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.CompoundButton;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import com.pd.lookatme.LookAtMe;
-
-public class MainActivity2 extends AppCompatActivity {
-WebView webView;
-ToggleButton toggleButton;
-    DrawerLayout drawerLayout;
+public class Download_Zip extends AppCompatActivity {
+    WebView webView; DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_download__zip);
         drawerLayout=(DrawerLayout)findViewById(R.id.draw);
-        toggleButton = findViewById(R.id.tb1);
-        webView = findViewById(R.id.full);
-        String link=getIntent().getStringExtra("link");
-         String title=getIntent().getStringExtra("title");
-        Toast.makeText(getApplicationContext(),"Title: "+title,Toast.LENGTH_SHORT).show();
-        webView.loadUrl(link);
-        webView.setWebViewClient(new WebViewClient());
-        webView.setWebChromeClient(new WebChromeClient());
-        webView.getSettings().setJavaScriptEnabled(true);
-        toggleButton.setTooltipText("Switch to AI Mode");
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Intent intent=new Intent(getApplicationContext(),Ai_Mode_Activity.class);
-                intent.putExtra("title",title);
-                startActivity(intent);
-            }
-        });
+        String title=getIntent().getStringExtra("title");
+        webView=(WebView)findViewById(R.id.web);
+        switch (title) {
+            case "Convertor App":
+                webView.loadUrl("https://drive.google.com/file/d/17XPMU1vTQAnT8daBrtU5uuKJFhCKcAL2/view?usp=share_link");
+                break;
+            case "Inventory Management App":
+                webView.loadUrl("https://drive.google.com/file/d/100NMk76nYclI8XNR18HsLMdweLH7iMBZ/view?usp=share_link");
+                break;
+            case "Novel Scholar App":
+                webView.loadUrl("https://drive.google.com/file/d/1ZkblVzsUXxeX9RqHbhOxgt738xtK9W5F/view?usp=share_link");
+                break;
+            case "Notification App":
+                webView.loadUrl("https://drive.google.com/file/d/1uYKNXo97pt3mACNfZSlAuXzdKQWKBKKb/view?usp=share_link");
+                break;
+            case "Greetings App":
+                webView.loadUrl("https://drive.google.com/file/d/1AkKHHKJmdsPGFMgEp5dRCN1YWjSpoL9r/view?usp=share_link");
+                break;
+            case "Shlok Mantra App":
+                webView.loadUrl("https://drive.google.com/file/d/1rRRjFfZaiIU-xZBNjz9VKObCNmCqcNmV/view?usp=share_link");
+                break;
+            case "Quiz App":
+                webView.loadUrl("https://drive.google.com/file/d/1n2emUpROF8c2ejabw-3BIZv8IHEL7V31/view?usp=share_link");
+                break;
+        }
+        webView.setWebViewClient(new DownloadAPKZip.client()); WebSettings webSettings=webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true); webView.clearCache(true);
+        webView.clearHistory();
+
+        webView.setDownloadListener(new DownloadListener() { @Override
+        public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+            DownloadManager.Request request=new DownloadManager.Request(Uri.parse(url));
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            DownloadManager dm=(DownloadManager)getSystemService(DOWNLOAD_SERVICE); dm.enqueue(request);
+            Toast.makeText(getApplicationContext(),"Downloading Started...",Toast.LENGTH_SHORT).show(); }});
 
     }
     @Override
@@ -98,7 +110,7 @@ ToggleButton toggleButton;
     }
     public void ClickLogout(View view){
         logout(this); }
-    public static void logout(final MainActivity2 mainActivity) { android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(mainActivity);
+    public static void logout(final Download_Zip mainActivity) { android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(mainActivity);
         builder.setTitle("Logout");builder.setMessage("Are You Sure You Want to Logout ?");
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override

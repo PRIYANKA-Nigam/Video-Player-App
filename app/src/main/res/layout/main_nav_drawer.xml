@@ -11,7 +11,11 @@
         android:layout_width="match_parent" android:layout_height="wrap_content"
         android:text="Get2logics" android:textSize="22sp"
         android:textStyle="bold" android:textAlignment="center"
-        android:textColor="#A020F0" android:gravity="center_horizontal" />
+        android:textColor="#A020F0" android:gravity="center_horizontal"
+        android:shadowColor="@android:color/holo_orange_dark"
+        android:shadowDx="-15"
+        android:shadowDy="-15"
+        android:shadowRadius="13"/>
     <View android:layout_width="match_parent"
         android:layout_height="1dp" android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp" android:background="#636363"/>
@@ -21,7 +25,12 @@
         <TextView android:layout_width="0dp"
             android:layout_height="wrap_content" android:layout_weight="1"
             android:text="Home" android:padding="12dp"
-            android:layout_marginStart="16dp" android:layout_marginLeft="16dp" />
+            android:layout_marginStart="16dp" android:layout_marginLeft="16dp"
+            android:textColor="#A020F0"
+            android:shadowColor="@android:color/holo_orange_dark"
+            android:shadowDx="-15"
+            android:shadowDy="-15"
+            android:shadowRadius="13"/>
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginEnd="48dp"
             android:src="@drawable/home" android:layout_marginRight="48dp" />
@@ -32,7 +41,13 @@
     <TextView  android:layout_width="0dp"
         android:layout_height="wrap_content" android:layout_weight="1"
         android:text="Download APK" android:padding="12dp"
-        android:layout_marginStart="16dp" android:layout_marginLeft="16dp" />
+        android:layout_marginStart="16dp" android:layout_marginLeft="16dp"
+        android:textColor="#A020F0"
+        android:shadowColor="@android:color/holo_orange_dark"
+        android:shadowDx="-15"
+        android:shadowDy="-15"
+        android:shadowRadius="13"
+        />
     <ImageView android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:layout_marginEnd="48dp"
         android:src="@drawable/apk"
@@ -43,7 +58,13 @@
         <TextView android:layout_width="0dp"
             android:layout_height="wrap_content" android:layout_weight="1"
             android:text="Download Zip" android:padding="12dp"
-            android:layout_marginStart="16dp" android:layout_marginLeft="16dp" />
+            android:layout_marginStart="16dp" android:layout_marginLeft="16dp"
+            android:textColor="#A020F0"
+            android:shadowColor="@android:color/holo_orange_dark"
+            android:shadowDx="-15"
+            android:shadowDy="-15"
+            android:shadowRadius="13"
+            />
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginEnd="48dp"
             android:src="@drawable/zip"
@@ -54,7 +75,13 @@
         <TextView android:layout_width="0dp"
             android:layout_height="wrap_content" android:layout_weight="1"
             android:text="View Source Code" android:padding="12dp"
-            android:layout_marginStart="16dp" android:layout_marginLeft="16dp" />
+            android:layout_marginStart="16dp" android:layout_marginLeft="16dp"
+            android:textColor="#A020F0"
+            android:shadowColor="@android:color/holo_orange_dark"
+            android:shadowDx="-15"
+            android:shadowDy="-15"
+            android:shadowRadius="13"
+            />
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginEnd="48dp"
             android:src="@drawable/code"
@@ -65,7 +92,13 @@
         <TextView android:layout_width="0dp"
             android:layout_height="wrap_content" android:layout_weight="1"
             android:text="About App" android:padding="12dp"
-            android:layout_marginStart="16dp" android:layout_marginLeft="16dp" />
+            android:layout_marginStart="16dp" android:layout_marginLeft="16dp"
+            android:textColor="#A020F0"
+            android:shadowColor="@android:color/holo_orange_dark"
+            android:shadowDx="-15"
+            android:shadowDy="-15"
+            android:shadowRadius="13"
+            />
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginEnd="48dp"
             android:src="@drawable/info"
@@ -76,7 +109,13 @@
         <TextView android:layout_width="0dp"
             android:layout_height="wrap_content" android:layout_weight="1"
             android:text="Logout" android:padding="12dp"
-            android:layout_marginStart="16dp" android:layout_marginLeft="16dp" />
+            android:layout_marginStart="16dp" android:layout_marginLeft="16dp"
+            android:textColor="#A020F0"
+            android:shadowColor="@android:color/holo_orange_dark"
+            android:shadowDx="-15"
+            android:shadowDy="-15"
+            android:shadowRadius="13"
+            />
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginEnd="48dp"
             android:src="@drawable/logout"

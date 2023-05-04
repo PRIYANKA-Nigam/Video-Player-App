@@ -16,6 +16,10 @@
         android:layout_height="wrap_content"
         android:text="Youtube Apps"
        android:layout_gravity="center"
+        android:shadowColor="@android:color/holo_orange_light"
+        android:shadowDx="-15"
+        android:shadowDy="-15"
+        android:shadowRadius="13"
         android:textStyle="bold"
         android:textSize="25dp"
         android:textAlignment="center"
@@ -26,6 +30,10 @@
         android:id="@+id/rec"
         android:layout_width="370dp"
         android:layout_height="667dp"
+        android:shadowColor="@android:color/holo_orange_light"
+        android:shadowDx="-15"
+        android:shadowDy="-15"
+        android:shadowRadius="13"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

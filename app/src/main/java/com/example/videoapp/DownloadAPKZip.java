@@ -1,25 +1,35 @@
 package com.example.videoapp;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DownloadManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-public class DownloadAPK extends AppCompatActivity {
-    WebView webView;
+public class DownloadAPKZip extends AppCompatActivity {
+    WebView webView; DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_download_a_p_k);
+        setContentView(R.layout.activity_download_a_p_k_zip);
+        drawerLayout=(DrawerLayout)findViewById(R.id.draw);
         String title=getIntent().getStringExtra("title");
         webView=(WebView)findViewById(R.id.web);
         switch (title) {
@@ -83,9 +93,27 @@ public class DownloadAPK extends AppCompatActivity {
             DownloadManager dm=(DownloadManager)getSystemService(DOWNLOAD_SERVICE); dm.enqueue(request);
             Toast.makeText(getApplicationContext(),"Downloading Started...",Toast.LENGTH_SHORT).show(); }});
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dark_brightness,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.dark:
+                startActivity(new Intent(this,DarkModeActivity.class));
+                break;
+            case R.id.bright:
+                startActivity(new Intent(this,SetBrightnessActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public void callDialog(String s) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(DownloadAPK.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(DownloadAPKZip.this);
         builder.setCancelable(false);
         builder.setTitle("No APK exists for the choosen - "+s);
         builder.setMessage("Check Web Apps on browser.");
@@ -112,4 +140,38 @@ public class DownloadAPK extends AppCompatActivity {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url); }
     }
+    public void ClickMenu(View view){
+        openDrawer(drawerLayout);
+    }
+    public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); }
+    public void ClickLogo(View view){
+        closeDrawer(drawerLayout);
+    }
+    public static void closeDrawer(DrawerLayout drawerLayout) { if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        drawerLayout.closeDrawer(GravityCompat.START); } }
+    public void ClickHome(View view){
+        MainActivity.redirectActivity(this,MainActivity.class);
+    }
+    public void ClickAPK(View view){
+        MainActivity.redirectActivity(this,APKActivity.class);
+    }
+    public void ClickZip(View view){
+        MainActivity.redirectActivity(this,ZipActivity.class);
+    }
+    public void ClickCode(View view){
+        MainActivity.redirectActivity(this,CodeActivity.class);
+    }
+    public void ClickAboutUs(View view){
+        MainActivity.redirectActivity(this,AboutActivity.class);
+    }
+    public void ClickLogout(View view){
+        logout(this); }
+    public static void logout(final DownloadAPKZip mainActivity) { android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(mainActivity);
+        builder.setTitle("Logout");builder.setMessage("Are You Sure You Want to Logout ?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mainActivity.finishAffinity();System.exit(0); }});
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
+        public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }}); builder.show(); }
 }

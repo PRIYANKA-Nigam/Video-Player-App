@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/draw"
-    tools:context=".ViewCodeActivity">
+    tools:context=".Download_APK">
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent" android:orientation="vertical">
-    <include layout="@layout/main_toolbar" />
-    <WebView
-        android:id="@+id/web"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <include layout="@layout/main_toolbar" />
+        <WebView
+            android:id="@+id/web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="300dp"

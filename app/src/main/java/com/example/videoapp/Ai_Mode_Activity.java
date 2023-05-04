@@ -1,12 +1,21 @@
 package com.example.videoapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
@@ -17,6 +26,7 @@ import com.pd.lookatme.LookAtMe;
 
 public class Ai_Mode_Activity extends AppCompatActivity {
     ToggleButton toggleButton;
+    DrawerLayout drawerLayout;
     private LookAtMe lookAtMe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +35,7 @@ public class Ai_Mode_Activity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ai__mode_);
+        drawerLayout=(DrawerLayout)findViewById(R.id.draw);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_USER);
         toggleButton = findViewById(R.id.tb1);
         toggleButton.setTooltipText("Switch to Normal Mode");
@@ -85,9 +96,62 @@ public class Ai_Mode_Activity extends AppCompatActivity {
         lookAtMe.setLookMe();
         getSupportActionBar().hide();
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dark_brightness,menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.dark:
+                startActivity(new Intent(this,DarkModeActivity.class));
+                break;
+            case R.id.bright:
+                startActivity(new Intent(this,SetBrightnessActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void ClickMenu(View view){
+        openDrawer(drawerLayout);
+    }
+    public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); }
+    public void ClickLogo(View view){
+        closeDrawer(drawerLayout);
+    }
+    public static void closeDrawer(DrawerLayout drawerLayout) { if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        drawerLayout.closeDrawer(GravityCompat.START); } }
+    public void ClickHome(View view){
+        MainActivity.redirectActivity(this,MainActivity.class);
+    }
+    public void ClickAPK(View view){
+        MainActivity.redirectActivity(this,APKActivity.class);
+    }
+    public void ClickZip(View view){
+        MainActivity.redirectActivity(this,ZipActivity.class);
+    }
+    public void ClickCode(View view){
+        MainActivity.redirectActivity(this,CodeActivity.class);
+    }
+    public void ClickAboutUs(View view){
+        MainActivity.redirectActivity(this,AboutActivity.class);
+    }
+    public void ClickLogout(View view){
+        logout(this); }
+    public static void logout(final Ai_Mode_Activity mainActivity) { android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(mainActivity);
+        builder.setTitle("Logout");builder.setMessage("Are You Sure You Want to Logout ?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mainActivity.finishAffinity();System.exit(0); }});
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
+        public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }}); builder.show(); }
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig); //to continue play video from that point in landscape mode
     }
+
 }

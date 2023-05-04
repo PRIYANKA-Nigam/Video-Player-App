@@ -1,18 +1,30 @@
 package com.example.videoapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class ZipActivity extends AppCompatActivity {
-    DrawerLayout drawerLayout;
+    DrawerLayout drawerLayout;  static int flag;
+    RecyclerView recyclerView;
+    ArrayList<APK_ZIP_Modal> mainModels;
+    APK_Adapter mainAdapter;
     public static void logout(final MainActivity mainActivity2) {
         AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity2);builder.setTitle("Logout");
         builder.setMessage("Are You Sure You Want to Logout ?");
@@ -60,7 +72,42 @@ public class ZipActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zip);
         drawerLayout=(DrawerLayout)findViewById(R.id.cdraw);
+        flag=2;
+        recyclerView=(RecyclerView)findViewById(R.id.rec);
+        mainModels=new ArrayList<>();
+        mainAdapter =new APK_Adapter(this,mainModels);
+        String[] title={ "Convertor App","Inventory Management App","Novel Scholar App",
+                "Notification App","Greetings App",
+                "Shlok Mantra App","Quiz App"};
+        for(int i=0;i<title.length;i++){
+            APK_ZIP_Modal mainModel=new APK_ZIP_Modal(title[i]);
+            this.mainModels.add(mainModel);
+        }
+        RecyclerView.LayoutManager layoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        mainAdapter=new APK_Adapter(ZipActivity.this,mainModels);
+        recyclerView.setAdapter(mainAdapter);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dark_brightness,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.dark:
+                startActivity(new Intent(this,DarkModeActivity.class));
+                break;
+            case R.id.bright:
+                startActivity(new Intent(this,SetBrightnessActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void ClickMenu(View view){
         openDrawer(drawerLayout);
     }

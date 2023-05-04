@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/ddraw"
-    tools:context=".DownloadAPK">
+    android:id="@+id/draw"
+    tools:context=".DownloadAPKZip">
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent" android:orientation="vertical">
     <include layout="@layout/main_toolbar" />
