@@ -28,53 +28,49 @@ String[] arr = new String[]{"CV Maker App", "Convertor App", "Calculator App",
             "Monthlies Tracker App", "Inventory Management App", "Novel Scholar App", "Notification App",
             "Greetings App", "Shlok Mantra App", "Quiz App", "Banking App", "ATM Cash Dispenser App",
             "Dictionary App", "Text to Json Convertor App", "PHP Basics","API-1","API-2","API-3","API-4","API-5"};
-//        "Storing JSP form data to h2 in-memory database",
-//            "Store data to h2 in-memory database using jdbctemplate class",
-//            "CRUD operation with postman using ResponseEntity class",
-//            "Fetch stored data from h2 in-memory database using jpa repository and jdbctemplate",
-//            "Implementation of basic GET API"};
-    public static void logout(final MainActivity mainActivity2) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity2);builder.setTitle("Logout");
-        builder.setMessage("Are You Sure You Want to Logout ?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
-            public void onClick(DialogInterface dialog, int which) {
-                mainActivity2.finishAffinity(); System.exit(0); }});
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss(); }});builder.show(); }
-    public static void logout(final APKActivity ai) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(ai);builder.setTitle("Logout");
-        builder.setMessage("Are You Sure You Want to Logout ?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ai.finishAffinity(); System.exit(0); }});
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss(); }});builder.show(); }
-    public static void logout(final ZipActivity mainActivity3) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity3);builder.setTitle("Logout");
-        builder.setMessage("Are You Sure You Want to Logout ?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
-            public void onClick(DialogInterface dialog, int which) {
-                mainActivity3.finishAffinity(); System.exit(0); }});
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss(); }});builder.show(); }
-    public static void logout(final AboutActivity mainActivity2) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity2);builder.setTitle("Logout");
-        builder.setMessage("Are You Sure You Want to Logout ?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
-            public void onClick(DialogInterface dialog, int which) {
-                mainActivity2.finishAffinity(); System.exit(0); }});
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss(); }});builder.show(); }
+//
+//    public static void logout(final MainActivity mainActivity2) {
+//        AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity2);builder.setTitle("Logout");
+//        builder.setMessage("Are You Sure You Want to Logout ?");
+//        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                mainActivity2.finishAffinity(); System.exit(0); }});
+//        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss(); }});builder.show(); }
+//    public static void logout(final APKActivity ai) {
+//        AlertDialog.Builder builder=new AlertDialog.Builder(ai);builder.setTitle("Logout");
+//        builder.setMessage("Are You Sure You Want to Logout ?");
+//        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                ai.finishAffinity(); System.exit(0); }});
+//        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
+//        public void onClick(DialogInterface dialog, int which) {
+//            dialog.dismiss(); }});builder.show(); }
+//    public static void logout(final ZipActivity mainActivity3) {
+//        AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity3);builder.setTitle("Logout");
+//        builder.setMessage("Are You Sure You Want to Logout ?");
+//        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                mainActivity3.finishAffinity(); System.exit(0); }});
+//        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss(); }});builder.show(); }
+//    public static void logout(final AboutActivity mainActivity2) {
+//        AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity2);builder.setTitle("Logout");
+//        builder.setMessage("Are You Sure You Want to Logout ?");
+//        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                mainActivity2.finishAffinity(); System.exit(0); }});
+//        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
+//        public void onClick(DialogInterface dialog, int which) {
+//            dialog.dismiss(); }});builder.show(); }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

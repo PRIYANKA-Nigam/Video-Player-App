@@ -78,13 +78,6 @@ public class LinkActivity extends AppCompatActivity {
     public void ClickGitlab(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"gi");}
     public void ClickHack(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"h");}
     public void ClickLogout(View view){
-        logout(this); }
-    public static void logout(final LinkActivity mainActivity) { android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(mainActivity);
-        builder.setTitle("Logout");builder.setMessage("Are You Sure You Want to Logout ?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override
-            public void onClick(DialogInterface dialog, int which) {
-                mainActivity.finishAffinity();System.exit(0); }});
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
-        public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }}); builder.show(); }
+        MainActivity.logout(this); }
+
 }
