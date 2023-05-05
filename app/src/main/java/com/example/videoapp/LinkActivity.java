@@ -1,77 +1,50 @@
 package com.example.videoapp;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import com.pd.lookatme.LookAtMe;
-
-public class MainActivity2 extends AppCompatActivity {
-WebView webView;
-ToggleButton toggleButton;
+public class LinkActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_link);
         drawerLayout=(DrawerLayout)findViewById(R.id.draw);
-        toggleButton = findViewById(R.id.tb1);
-        webView = findViewById(R.id.full);
-        String link=getIntent().getStringExtra("link");
-         String title=getIntent().getStringExtra("title");
-        Toast.makeText(getApplicationContext(),"Title: "+title,Toast.LENGTH_SHORT).show();
-        webView.loadUrl(link);
-        webView.setWebViewClient(new WebViewClient());
-        webView.setWebChromeClient(new WebChromeClient());
-        webView.getSettings().setJavaScriptEnabled(true);
-        toggleButton.setTooltipText("Switch to AI Mode");
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Intent intent=new Intent(getApplicationContext(),Ai_Mode_Activity.class);
-                intent.putExtra("title",title);
-                startActivity(intent);
-            }
-        });
-
+        textView = findViewById(R.id.textView2);
+       textView.setMovementMethod(LinkMovementMethod.getInstance()); //to make link clickable --
+        String link = getIntent().getStringExtra("link");
+        String spackage = "com.example.videoapp";
+        String webLink = "";
+        openLink(link, spackage, webLink);
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.dark_brightness,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.dark:
-                startActivity(new Intent(this,DarkModeActivity.class));
-                break;
-            case R.id.bright:
-                startActivity(new Intent(this,SetBrightnessActivity.class));
-                break;
+    private void openLink(String appLink, String spackage, String webLink) {
+        try {
+            Uri uri = Uri.parse(appLink);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(uri);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } catch (ActivityNotFoundException activityNotFoundException) {
+            Uri uri = Uri.parse(webLink);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(uri);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
-        return super.onOptionsItemSelected(item);
     }
-
     public void ClickMenu(View view){
         openDrawer(drawerLayout);
     }
@@ -106,7 +79,7 @@ ToggleButton toggleButton;
     public void ClickHack(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"h");}
     public void ClickLogout(View view){
         logout(this); }
-    public static void logout(final MainActivity2 mainActivity) { android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(mainActivity);
+    public static void logout(final LinkActivity mainActivity) { android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(mainActivity);
         builder.setTitle("Logout");builder.setMessage("Are You Sure You Want to Logout ?");
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)  @Override

@@ -27,6 +27,7 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -156,6 +157,14 @@ private Adapter adapter;
     public void ClickAboutUs(View view){
         redirectActivity(this,AboutActivity.class);
     }
+    public void ClickLinkedIn(View view){redirectActivity2(this,LinkActivity.class,"l");}
+    public void ClickInsta(View view){redirectActivity2(this,LinkActivity.class,"i");}
+    public void ClickTwitter(View view){redirectActivity2(this,LinkActivity.class,"t");}
+    public void ClickFB(View view){redirectActivity2(this,LinkActivity.class,"f");}
+    public void ClickWebsite(View view){redirectActivity2(this,LinkActivity.class,"w");}
+    public void ClickGithub(View view){redirectActivity2(this,LinkActivity.class,"g");}
+    public void ClickGitlab(View view){redirectActivity2(this,LinkActivity.class,"gi");}
+    public void ClickHack(View view){redirectActivity2(this,LinkActivity.class,"h");}
     public void ClickLogout(View view){
         logout(this); }
     public static void logout(final MainActivity mainActivity) { AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity);
@@ -166,6 +175,24 @@ private Adapter adapter;
                 mainActivity.finishAffinity();System.exit(0); }});
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() { @Override
         public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }}); builder.show(); }
+    public static void redirectActivity2(Activity activity, Class aclass,String s) { Intent intent=new Intent(activity,aclass);
+    if(s=="l")
+        intent.putExtra("link","https://www.linkedin.com/in/priyanka-nigam-083247172");
+        if(s=="i")
+            intent.putExtra("link","https://www.instagram.com/nigampriyanka042");
+        if(s=="t")
+            intent.putExtra("link","https://www.twitter.com/PriyankaN2504");
+        if(s=="f")
+            intent.putExtra("link","https://www.facebook.com/priyanka.nigam.9256");
+        if(s=="w")
+            intent.putExtra("link","https://get2logics.com/");
+        if(s=="g")
+            intent.putExtra("link","https://github.com/PRIYANKA-Nigam/");
+        if(s=="gi")
+            intent.putExtra("link","https://gitlab.com/PRIYANKA-Nigam/");
+        if(s=="h")
+            intent.putExtra("link","https://www.hackerrank.com/ec_1634831038");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); activity.startActivity(intent); }
     public static void redirectActivity(Activity activity, Class aclass) { Intent intent=new Intent(activity,aclass);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); activity.startActivity(intent); } @Override
 protected void onPause() { super.onPause(); closeDrawer(drawerLayout); }
@@ -193,12 +220,6 @@ protected void onPause() { super.onPause(); closeDrawer(drawerLayout); }
     }
 
     @Override
-    protected void onUserLeaveHint() {
-        PictureInPictureParams pictureInPictureParams= new PictureInPictureParams.Builder().build();
-        enterPictureInPictureMode(pictureInPictureParams);
-    }
-
-    @Override
     public boolean onQueryTextSubmit(String s) {
         return false;
     }
@@ -209,9 +230,15 @@ protected void onPause() { super.onPause(); closeDrawer(drawerLayout); }
         ArrayList<Modal> newList=new ArrayList<>();
         for (Modal dish : arrayList){ String name=dish.getTitle().toLowerCase();
             if (name.contains(s))
-                newList.add(dish); }
+                newList.add(dish);
+        }
         adapter.setFilter(newList);
         return true;
 
+    }
+    @Override
+    protected void onUserLeaveHint() {
+        PictureInPictureParams pictureInPictureParams= new PictureInPictureParams.Builder().build();
+        enterPictureInPictureMode(pictureInPictureParams);
     }
 }

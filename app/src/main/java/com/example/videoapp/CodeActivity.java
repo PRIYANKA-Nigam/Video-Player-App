@@ -172,6 +172,14 @@ String[] arr = new String[]{"CV Maker App", "Convertor App", "Calculator App",
     public void ClickAboutUs(View view){
         MainActivity.redirectActivity(this,AboutActivity.class);
     }
+    public void ClickLinkedIn(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"l");}
+    public void ClickInsta(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"i");}
+    public void ClickTwitter(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"t");}
+    public void ClickFB(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"f");}
+    public void ClickWebsite(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"w");}
+    public void ClickGithub(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"g");}
+    public void ClickGitlab(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"gi");}
+    public void ClickHack(View view){MainActivity.redirectActivity2(this,LinkActivity.class,"h");}
     public void ClickLogout(View view){ MainActivity.logout(this); }
 
     @Override

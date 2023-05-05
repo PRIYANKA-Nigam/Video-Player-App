@@ -1,4 +1,54 @@
 <resources>
     <string name="app_name">Video App</string>
     <string name="play">Play</string>
+    <string name="About"><u>About App</u></string>
+    <string name="link">Follow and connect me on my social profiles and do visit
+        my website .\n\n
+    Website: <a href="https://get2logics.com/">https://get2logics.com/</a>\n
+        and subscribe to my youtube channel .\n\n
+        Channel :<a href="https://www.youtube.com/@priyankanigam6239/playlists">Get2logics</a></string>
+    <string name="about">
+        This is Video Player app which is android friendly.It is both an offline as well as online based app.
+All the videos that i have added here are actually my own self made apps which are currently live
+streamed on my youtube channel - Get2logics.\n
+I have integrated AI eye detecting feature in this app.  So videos can be watched in normal mode and AI
+mode both. In normal mode  the video will be streamed online through youtube google server.
+When you switch to AI mode  the videos will be available offline there and will be played from
+your app memory.The main functonality of this mode is that if your eyes are off  than no video will be
+played.The video will get pause if you close your eyes.The video will play only if your eyes are open or else
+it will be in pause state.\n\n
+
+I have added share functionality in the app.You can share the app link which is actually a youtube link to
+a 3rd person or app. I have also given the app source code link within the app to clone the app code into
+your machine and have also given the APK file to view the actual app and also the complete file in the compressed
+zip format to download.On Long pressing any app list item or a popup will open asking you to
+share the app to others or download the APK file of the app or the PDF or view the source code of that linked app.\n
+
+Here are some other features in the app too. Like to enable dark mode view for your app or optimize the screen
+brightness from within the app.And also a picture-in-picture mode or so that you do not have to exit from the
+app while running some other app.This feature is very helpful for the device which do not support split screen
+mode.With this you can simultaneously work on multiple apps without exiting from this app.\n
+This app will be very helpful in the low internet speed or bandwidth hotspot.You can play your video without
+any buffering or pre-loading issue.\n
+
+The videos will play in HD quality by-default but you can customise your video quality to different supportable
+pixel size in the normal video mode.Some good facts about this app is are :\n
+Stability.
+Robust reporting and analytics.
+Lightweight.
+Curations own playlists.
+Direct management.
+Seamless integrations.
+You will not face any sound or picture quality issue in the app.If you feel that our app is lacking any good feature
+or is laden with bugs or incomplete functionality .Feel free to connect us .\n
+
+You can connect with me through my website : www.get2logics.com\n
+I also have a youtube channel as - Get2logics .\n Please watch my videos and do like and subscribe to my channel.
+You can also comment me there  i will try to give my response as soon
+as possible.
+
+
+
+
+    </string>
 </resources>

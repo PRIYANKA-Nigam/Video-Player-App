@@ -5,7 +5,7 @@
     android:orientation="vertical">
     <ImageView
         android:layout_width="match_parent" android:layout_height="120dp"
-        android:layout_margin="16dp" android:onClick="ClickLogo"
+        android:layout_margin="16dp" android:onClick="ClickWebsite"
         android:src="@drawable/g"/>
     <TextView
         android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -33,7 +33,8 @@
             android:shadowRadius="13"/>
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginEnd="48dp"
-            android:src="@drawable/home" android:layout_marginRight="48dp" />
+            android:src="@drawable/ic_baseline_home_24" android:layout_marginRight="48dp"
+            android:background="#A020F0" />
     </LinearLayout> <LinearLayout
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:orientation="horizontal" android:gravity="center_vertical"
@@ -50,8 +51,9 @@
         />
     <ImageView android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:layout_marginEnd="48dp"
-        android:src="@drawable/apk"
-        android:layout_marginRight="48dp" /></LinearLayout>
+        android:src="@drawable/apk2"
+        android:layout_marginRight="48dp"
+        android:background="#A020F0" /></LinearLayout>
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content" android:orientation="horizontal"
         android:gravity="center_vertical" android:onClick="ClickZip">
@@ -67,8 +69,9 @@
             />
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginEnd="48dp"
-            android:src="@drawable/zip"
-            android:layout_marginRight="48dp" /></LinearLayout>
+            android:src="@drawable/zip2"
+            android:layout_marginRight="48dp"
+            android:background="#A020F0" /></LinearLayout>
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content" android:orientation="horizontal"
         android:gravity="center_vertical" android:onClick="ClickCode">
@@ -84,8 +87,9 @@
             />
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginEnd="48dp"
-            android:src="@drawable/code"
-            android:layout_marginRight="48dp" /></LinearLayout>
+            android:src="@drawable/ic_baseline_chat_24"
+            android:layout_marginRight="48dp"
+            android:background="#A020F0" /></LinearLayout>
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content" android:orientation="horizontal"
         android:gravity="center_vertical" android:onClick="ClickAboutUs">
@@ -101,8 +105,9 @@
             />
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginEnd="48dp"
-            android:src="@drawable/info"
-            android:layout_marginRight="48dp" /></LinearLayout>
+            android:src="@drawable/ic_baseline_info_24"
+            android:layout_marginRight="48dp"
+            android:background="#A020F0" /></LinearLayout>
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content" android:orientation="horizontal"
         android:gravity="center_vertical" android:onClick="ClickLogout">
@@ -118,6 +123,87 @@
             />
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginEnd="48dp"
-            android:src="@drawable/logout"
-            android:layout_marginRight="48dp" /></LinearLayout>
+            android:src="@drawable/ic_baseline_power_settings_new_24"
+            android:layout_marginRight="48dp"
+            android:background="#A020F0" /></LinearLayout>
+    <TextView
+        android:layout_marginTop="110dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Follow/Connect me On :"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="90dp"
+        android:shadowColor="@android:color/holo_orange_dark"
+        android:shadowDx="-15"
+        android:shadowDy="-15"
+        android:shadowRadius="13"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center_vertical"
+        android:onClick="ClickLogout"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/a"
+            android:layout_width="38dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:onClick="ClickLinkedIn"
+            android:src="@drawable/lin" />
+        <ImageView
+            android:id="@+id/b"
+            android:layout_width="38dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:onClick="ClickInsta"
+            android:src="@drawable/ins" />
+        <ImageView
+            android:id="@+id/c"
+            android:layout_width="38dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:onClick="ClickTwitter"
+            android:src="@drawable/twit" />
+        <ImageView
+            android:id="@+id/d"
+            android:layout_width="38dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:onClick="ClickFB"
+            android:src="@drawable/fb" />
+        <ImageView
+            android:id="@+id/e"
+            android:layout_width="38dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:onClick="ClickWebsite"
+            android:src="@drawable/g" />
+        <ImageView
+            android:id="@+id/f"
+            android:layout_width="38dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:onClick="ClickGithub"
+            android:src="@drawable/github" />
+        <ImageView
+            android:id="@+id/g"
+            android:layout_width="38dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:onClick="ClickGitlab"
+            android:src="@drawable/gitlab" />
+        <ImageView
+            android:id="@+id/h"
+            android:layout_width="38dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:onClick="ClickHack"
+            android:src="@drawable/hack" />
+    </LinearLayout>
 </LinearLayout>

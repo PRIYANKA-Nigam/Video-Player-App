@@ -12,15 +12,37 @@
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
         <TextView android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="About"
-            android:textSize="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/About"
+            android:textSize="50sp"
+            android:gravity="center"
             android:shadowColor="@android:color/holo_orange_light"
             android:shadowDx="-15"
             android:shadowDy="-15"
             android:shadowRadius="13"
             android:textStyle="bold"
-            android:gravity="center"/>
+            tools:ignore="HardcodedText" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <ScrollView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            >
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/about"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:shadowColor="@android:color/holo_orange_light"
+                android:shadowDx="-15"
+                android:shadowDy="-15"
+                android:shadowRadius="13"
+                android:textStyle="bold|italic"
+                />
+        </ScrollView>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="300dp"
